@@ -1,18 +1,19 @@
 {
-  "name": "Chronos",
-  "short_name": "Chronos",
-  "start_url": ".",
+  "name": "Horaires App",
+  "short_name": "Horaires",
+  "description": "Application de gestion des horaires",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "description": "Application de gestion des horaires.",
+  "background_color": "#fffde7",
+  "theme_color": "#FFD600",
   "icons": [
     {
-      "src": "Chronos.png",
+      "src": "/Chronos.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "Chronos.png",
+      "src": "/Chronos.png",
       "sizes": "512x512",
       "type": "image/png"
     }
