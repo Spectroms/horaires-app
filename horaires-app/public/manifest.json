@@ -4,8 +4,8 @@
   "description": "Application de gestion des horaires",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#1e40af",
+  "background_color": "#fffde7",
+  "theme_color": "#FFD600",
   "icons": [
     {
       "src": "/Chronos.png",
