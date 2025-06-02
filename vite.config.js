@@ -13,7 +13,10 @@ export default defineConfig({
       '@utils': resolve(__dirname, './src/utils'),
       '@styles': resolve(__dirname, './src/styles'),
       '@assets': resolve(__dirname, './src/assets'),
-      '@contexts': resolve(__dirname, './src/contexts')
+      '@contexts': resolve(__dirname, './src/contexts'),
+      'firebase/app': 'firebase/app/dist/index.esm.js',
+      'firebase/auth': 'firebase/auth/dist/index.esm.js',
+      'firebase/firestore': 'firebase/firestore/dist/index.esm.js'
     },
     mainFields: ['module', 'jsnext:main', 'jsnext', 'browser', 'main']
   },
@@ -35,11 +38,14 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: true,
     target: 'esnext',
+    commonjsOptions: {
+      include: [/firebase/, /node_modules/]
+    },
     rollupOptions: {
+      external: ['firebase'],
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore'],
           'utils': ['jspdf', 'html2canvas', 'file-saver', 'xlsx']
         }
       }
