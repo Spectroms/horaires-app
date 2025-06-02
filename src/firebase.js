@@ -12,7 +12,7 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDClVPiELpRM6Z6-qYByfMsBZHVHtDParY",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "app-horaire-6fcb0.firebaseapp.com",
   projectId: "app-horaire-6fcb0",
   storageBucket: "app-horaire-6fcb0.appspot.com",
@@ -22,18 +22,12 @@ const firebaseConfig = {
 };
 
 // Vérification de la configuration
-if (!firebaseConfig.apiKey || firebaseConfig.apiKey === 'undefined') {
-  console.error('Erreur : La configuration Firebase est manquante. Veuillez créer un fichier .env à la racine du projet avec les variables suivantes :');
-  console.error(`
-VITE_FIREBASE_API_KEY=votre_api_key
-VITE_FIREBASE_AUTH_DOMAIN=votre_auth_domain
-VITE_FIREBASE_PROJECT_ID=votre_project_id
-VITE_FIREBASE_STORAGE_BUCKET=votre_storage_bucket
-VITE_FIREBASE_MESSAGING_SENDER_ID=votre_messaging_sender_id
-VITE_FIREBASE_APP_ID=votre_app_id
-  `);
+if (!import.meta.env.VITE_FIREBASE_API_KEY) {
+  console.error('Erreur: La clé API Firebase n\'est pas définie dans les variables d\'environnement');
+  console.error('Veuillez créer un fichier .env à la racine du projet avec la variable VITE_FIREBASE_API_KEY');
 }
 
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
-export const db = getFirestore(app); 
+export const db = getFirestore(app);
+export { app }; 
