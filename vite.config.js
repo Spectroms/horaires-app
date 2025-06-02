@@ -14,6 +14,13 @@ export default defineConfig({
       '@styles': resolve(__dirname, './src/styles'),
       '@assets': resolve(__dirname, './src/assets'),
       '@contexts': resolve(__dirname, './src/contexts')
+    },
+    mainFields: ['module', 'jsnext:main', 'jsnext', 'browser', 'main']
+  },
+  optimizeDeps: {
+    include: ['firebase/app', 'firebase/auth', 'firebase/firestore'],
+    esbuildOptions: {
+      target: 'esnext'
     }
   },
   server: {
@@ -27,11 +34,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: true,
+    target: 'esnext',
     rollupOptions: {
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'firebase': ['firebase'],
+          'firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore'],
           'utils': ['jspdf', 'html2canvas', 'file-saver', 'xlsx']
         }
       }
