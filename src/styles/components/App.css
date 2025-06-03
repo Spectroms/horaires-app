@@ -356,4 +356,12 @@ th, td, label, input, select, textarea, .recap-filtres select, .recap-filtres la
 .recap tr.total-semaine td {
   color: #fff !important;
   background: #222 !important;
+}
+
+.recap .recap-totaux *,
+.recap .recap-totaux input,
+.recap .recap-totaux .recap-total,
+.recap .recap-totaux .recap-total * {
+  color: #fff !important;
+  opacity: 1 !important;
 } 
