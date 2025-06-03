@@ -213,6 +213,11 @@ input:focus, select:focus, textarea:focus {
   margin: 0 auto;
 }
 
+.accueil h2,
+.accueil p {
+  color: #222 !important;
+}
+
 .accueil h2 {
   margin: 1.5rem 0;
   color: var(--text-color);
