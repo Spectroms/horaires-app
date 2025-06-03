@@ -65,11 +65,18 @@ export function useHoraires() {
     const newHoraires = [...horaires];
     const index = newHoraires.findIndex(h => h.date === horaire.date);
     if (index !== -1) {
+      const ok = window.confirm('Un horaire existe déjà pour ce jour. Voulez-vous vraiment le remplacer ?');
+      if (!ok) {
+        console.log('[addHoraire] Modification annulée par l\'utilisateur.');
+        return;
+      }
       newHoraires[index] = horaire;
     } else {
       newHoraires.push(horaire);
     }
+    console.log('[addHoraire] Sauvegarde horaire:', horaire);
     await saveHoraires(newHoraires);
+    console.log('[addHoraire] Nouvel état horaires:', newHoraires);
   };
 
   return {

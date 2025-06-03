@@ -54,7 +54,7 @@ function Navigation() {
  */
 function App() {
   const { user, loading: authLoading } = useAuth();
-  const { horaires, loading: horairesLoading, error } = useHoraires();
+  const { horaires, loading: horairesLoading, error, addHoraire } = useHoraires();
   const [darkMode, setDarkMode] = useState(() => {
     const saved = localStorage.getItem('darkMode');
     return saved ? JSON.parse(saved) : window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -80,7 +80,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Accueil />} />
-            <Route path="/saisie" element={user ? <Saisie /> : <Accueil />} />
+            <Route path="/saisie" element={user ? <Saisie onSave={addHoraire} horaires={horaires} /> : <Accueil />} />
             <Route path="/recap" element={user ? <Recap horaires={horaires} /> : <Accueil />} />
             <Route path="/parametres" element={<Parametres />} />
           </Routes>

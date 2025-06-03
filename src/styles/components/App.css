@@ -10,6 +10,9 @@
   --error-color: #f44336;
   --success-color: #4caf50;
   --disabled-color: #cccccc;
+  --switch-bg: #ccc;
+  --switch-active: #ffd600;
+  --switch-knob: #fff;
 }
 
 /* Mode sombre */
@@ -19,6 +22,9 @@
   --bg-secondary: #2d2d2d;
   --border-color: #404040;
   --disabled-color: #666666;
+  --switch-bg: #444;
+  --switch-active: #ffd600;
+  --switch-knob: #fff;
 }
 
 /* Reset et styles de base */
@@ -281,31 +287,316 @@ input:focus, select:focus, textarea:focus {
   z-index: 1000;
 }
 
-/* Responsive */
+/* Styles pour le toggle de thème */
+.theme-option, .parametres-option {
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s;
+  color: var(--text-color) !important;
+  border: 1.5px solid var(--border-color);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+}
+
+.theme-label, .parametres-option > span {
+  color: var(--text-color) !important;
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.theme-icon {
+  font-size: 1.2rem;
+  color: var(--accent-color);
+}
+
+/* Switch toggle */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--switch-bg);
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--switch-knob);
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--switch-active);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--switch-active);
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Améliorations mode sombre */
+.dark-mode .theme-option, .dark-mode .parametres-option {
+  background: #232323 !important;
+  border: 1.5px solid #444 !important;
+  color: #fff !important;
+}
+.dark-mode .theme-label, .dark-mode .parametres-option > span {
+  color: #fff !important;
+}
+
+.dark-mode .theme-icon {
+  color: var(--accent-color);
+}
+
+.dark-mode .slider {
+  background-color: var(--switch-bg);
+}
+
+.dark-mode input:checked + .slider {
+  background-color: var(--switch-active);
+}
+
+/* Responsive global */
 @media (max-width: 768px) {
-  nav {
-    flex-direction: row;
-    gap: 0;
-    padding: 0.5rem 0.2rem;
-  }
-  .nav-links {
-    gap: 0.7rem;
-  }
-  .nav-links a {
-    font-size: 0.93rem;
-    padding: 0.4rem 0.5rem 0.1rem 0.5rem;
-    min-width: 54px;
-  }
-  .nav-links a span {
-    font-size: 0.85rem;
+  html {
+    font-size: 14px;
   }
 
   main {
-    padding: 0.5rem;
+    padding: 1rem;
+    margin: 0.5rem auto;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+  }
+
+  .accueil, .saisie, .recap, .parametres {
+    padding: 1rem;
+    margin: 0.5rem auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px 24px;
+    font-size: 1rem;
   }
 
   form {
     padding: 0.5rem;
+  }
+
+  input, select, textarea {
+    font-size: 1rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+    min-width: auto;
+  }
+
+  .nav-links a span {
+    font-size: 0.8rem;
+  }
+}
+
+/* Petits écrans */
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  main {
+    padding: 0.8rem;
+    margin: 0.3rem auto;
+  }
+
+  .accueil, .saisie, .recap, .parametres {
+    padding: 0.8rem;
+    margin: 0.3rem auto;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+  }
+
+  .nav-links {
+    gap: 0.5rem;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+  }
+
+  .nav-links a span {
+    font-size: 0.75rem;
+  }
+
+  /* Ajustements pour les tableaux */
+  .table-recap {
+    font-size: 0.9rem;
+  }
+
+  .table-recap th,
+  .table-recap td {
+    padding: 0.5rem;
+  }
+
+  /* Ajustements pour les formulaires */
+  .form-group {
+    margin-bottom: 0.8rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+  }
+
+  input, select, textarea {
+    font-size: 0.9rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  /* Ajustements pour les messages */
+  .msg-success,
+  .msg-error {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+
+  /* Ajustements pour les paramètres */
+  .parametres-option {
+    padding: 0.8rem;
+  }
+
+  .parametres-help {
+    font-size: 0.85rem;
+  }
+
+  .theme-option, .parametres-option {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.98rem;
+  }
+  .theme-label, .parametres-option > span {
+    font-size: 0.98rem;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 360px) {
+  html {
+    font-size: 12px;
+  }
+
+  .nav-links {
+    gap: 0.3rem;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .nav-links a span {
+    font-size: 0.7rem;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Ajustements pour le mode sombre sur mobile */
+@media (max-width: 768px) {
+  .dark-mode .nav-links {
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+  }
+
+  .dark-mode .nav-links a {
+    color: var(--text-color) !important;
+  }
+
+  .dark-mode .nav-links a.active {
+    background: var(--accent-color);
+    color: #222 !important;
+  }
+
+  .dark-mode .btn {
+    background: var(--accent-color);
+    color: #222;
+  }
+
+  .dark-mode .btn:hover {
+    background: #ffb300;
+    color: #fff;
   }
 }
 
@@ -371,4 +662,27 @@ th, td, label, input, select, textarea, .recap-filtres select, .recap-filtres la
   color: #fff !important;
   background: #222 !important;
   border: 1.5px solid #ffd600 !important;
+}
+
+/* Amélioration du contraste du titre */
+.parametres-title {
+  color: #ffb300 !important;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Pour tous les écrans : harmonisation des paddings */
+.theme-option, .parametres-option {
+  padding: 0.8rem 1.2rem;
+}
+
+@media (max-width: 480px) {
+  .theme-option, .parametres-option {
+    padding: 0.6rem 0.7rem;
+    font-size: 0.98rem;
+  }
+  .theme-label, .parametres-option > span {
+    font-size: 0.98rem;
+  }
 } 

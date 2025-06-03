@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaCog } from 'react-icons/fa';
+import { FaCog, FaMoon, FaSun } from 'react-icons/fa';
 
 export function Parametres() {
   // Gestion du thème (mode sombre/clair)
@@ -38,13 +38,17 @@ export function Parametres() {
         <h2 className="parametres-title">Paramètres</h2>
       </div>
       <div className="parametres-options">
-        <div className="parametres-option">
-          <span>Mode sombre</span>
+        <div className="parametres-option theme-option">
+          <div className="theme-label">
+            {darkMode ? <FaMoon className="theme-icon" /> : <FaSun className="theme-icon" />}
+            <span>Mode {darkMode ? 'sombre' : 'clair'}</span>
+          </div>
           <label className="switch">
             <input
               type="checkbox"
               checked={darkMode}
               onChange={e => setDarkMode(e.target.checked)}
+              aria-label={`Activer le mode ${darkMode ? 'clair' : 'sombre'}`}
             />
             <span className="slider round"></span>
           </label>

@@ -490,3 +490,323 @@ button:focus, input[type="button"]:focus, input[type="submit"]:focus, input[type
   color: #d17b00;
   border: 1.5px solid #ffd600;
 }
+
+/* Harmonisation et modernisation de la saisie d'une journée */
+.saisie-card {
+  background: var(--blanc);
+  border-radius: 28px;
+  box-shadow: 0 6px 32px rgba(34,34,34,0.10);
+  padding: 2.2rem 1.2rem 2rem 1.2rem;
+  max-width: 600px;
+  margin: 2.2rem auto 2.5rem auto;
+  transition: box-shadow 0.2s;
+}
+.saisie-card:focus-within {
+  box-shadow: 0 8px 36px #ffd60055;
+}
+.saisie-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--jaune-fonce);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+.saisie-jour-info {
+  font-size: 1.13rem;
+  color: var(--gris-moyen);
+  margin-bottom: 1.7rem;
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+.saisie-jour-ferie {
+  color: var(--jaune-fonce);
+  font-weight: 700;
+  background: #fffbe7;
+  border-radius: 8px;
+  padding: 0.2em 0.7em;
+  font-size: 1em;
+  box-shadow: 0 1px 4px #ffd60022;
+}
+.saisie-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.7rem;
+}
+.saisie-row {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+.saisie-field-col {
+  flex: 1 1 180px;
+  min-width: 160px;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.saisie-help {
+  color: var(--gris-moyen);
+  font-size: 0.98em;
+  margin-bottom: 0.1em;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+}
+.saisie-field {
+  display: flex;
+  align-items: center;
+  background: var(--gris-clair);
+  border-radius: 14px;
+  padding: 0.6rem 1.1rem;
+  border: 1.5px solid var(--gris-moyen);
+  transition: border 0.18s, box-shadow 0.18s;
+  box-shadow: 0 1px 6px #ffd60011;
+}
+.saisie-field:focus-within {
+  border: 2px solid var(--jaune-fonce);
+  box-shadow: 0 0 0 2px #ffd60033;
+}
+.saisie-icon {
+  color: var(--jaune-fonce);
+  margin-right: 0.7rem;
+  font-size: 1.25em;
+}
+.saisie-field input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1.08em;
+  color: var(--noir);
+  width: 100%;
+  padding: 0.3em 0;
+  font-family: inherit;
+  transition: color 0.18s;
+}
+.saisie-field input:focus {
+  color: var(--jaune-fonce);
+}
+.saisie-btn, .saisie-btn-modern {
+  background: linear-gradient(90deg, #ffd600 60%, #ffb300 100%);
+  color: #222;
+  border: none;
+  border-radius: 22px;
+  font-weight: 800;
+  font-size: 1.13em;
+  padding: 1em 2.2em;
+  box-shadow: 0 2px 12px #ffd60033;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.08s;
+  margin-top: 1.7rem;
+  letter-spacing: 0.04em;
+  outline: none;
+  display: block;
+  width: 100%;
+}
+.saisie-btn:hover, .saisie-btn:focus {
+  background: linear-gradient(90deg, #ffb300 60%, #ffd600 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px #ffd60055;
+  transform: translateY(-2px) scale(1.03);
+}
+.saisie-success {
+  color: var(--vert-succes);
+  background: #f5fff7;
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  text-align: center;
+  margin-top: 1.2rem;
+  font-weight: 600;
+  border: 1.5px solid #b2f2bb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7em;
+  font-size: 1.05em;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .saisie-card {
+    padding: 1.2rem 0.3rem 1.2rem 0.3rem;
+    margin: 1.2rem auto 1.5rem auto;
+  }
+  .saisie-row {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .saisie-field-col {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+/* Mode sombre pour la saisie */
+.dark-mode .saisie-card {
+  background: #232323;
+  box-shadow: 0 6px 32px #000a;
+}
+.dark-mode .saisie-title {
+  color: #ffd600;
+}
+.dark-mode .saisie-field {
+  background: #2d2d2d;
+  border: 1.5px solid #444;
+  box-shadow: 0 1px 6px #0005;
+}
+.dark-mode .saisie-field:focus-within {
+  border: 2px solid #ffd600;
+  box-shadow: 0 0 0 2px #ffd60055;
+}
+.dark-mode .saisie-field input {
+  color: #fff;
+}
+.dark-mode .saisie-field input:focus {
+  color: #ffd600;
+}
+.dark-mode .saisie-btn, .dark-mode .saisie-btn-modern {
+  background: linear-gradient(90deg, #ffd600 60%, #ffb300 100%);
+  color: #232323;
+  box-shadow: 0 2px 12px #ffd60055;
+}
+.dark-mode .saisie-btn:hover, .dark-mode .saisie-btn:focus {
+  background: linear-gradient(90deg, #ffb300 60%, #ffd600 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px #ffd60099;
+}
+.dark-mode .saisie-success {
+  background: #1b5e20;
+  color: #fff;
+  border: 1.5px solid #388e3c;
+}
+
+/* Thème sombre global */
+.dark-mode, .dark-mode body, .dark-mode * {
+  background: #18191c !important;
+  color: #f3f3f3 !important;
+  border-color: #444 !important;
+  box-shadow: none;
+}
+
+.dark-mode .saisie-card, .dark-mode .parametres-card {
+  background: #23242a !important;
+  box-shadow: 0 6px 32px #000a !important;
+  border: 1.5px solid #292a2f !important;
+}
+
+.dark-mode .saisie-title, .dark-mode .parametres-title {
+  color: #ffd600 !important;
+}
+
+.dark-mode .saisie-field, .dark-mode .parametres-option {
+  background: #23242a !important;
+  border: 1.5px solid #444 !important;
+  color: #fff !important;
+  box-shadow: 0 1px 6px #0005 !important;
+}
+
+.dark-mode .saisie-field input, .dark-mode .parametres-time, .dark-mode input, .dark-mode select, .dark-mode textarea {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+.dark-mode .saisie-field input:focus, .dark-mode .parametres-time:focus {
+  color: #ffd600 !important;
+}
+
+.dark-mode .saisie-help, .dark-mode .parametres-help {
+  color: #bdbdbd !important;
+}
+
+.dark-mode .saisie-jour-info {
+  color: #bdbdbd !important;
+}
+
+.dark-mode .saisie-jour-ferie {
+  background: #292a2f !important;
+  color: #ffd600 !important;
+  box-shadow: 0 1px 4px #ffd60022 !important;
+}
+
+.dark-mode .saisie-btn, .dark-mode .saisie-btn-modern, .dark-mode .saisie-btn-large, .dark-mode .saisie-btn-center, .dark-mode button, .dark-mode .btn {
+  background: linear-gradient(90deg, #ffd600 60%, #ffb300 100%) !important;
+  color: #232323 !important;
+  box-shadow: 0 2px 12px #ffd60055 !important;
+}
+.dark-mode .saisie-btn:hover, .dark-mode .saisie-btn:focus, .dark-mode .saisie-btn-large:hover, .dark-mode .saisie-btn-large:focus, .dark-mode .saisie-btn-center:hover, .dark-mode .saisie-btn-center:focus, .dark-mode button:hover, .dark-mode button:focus, .dark-mode .btn:hover, .dark-mode .btn:focus {
+  background: linear-gradient(90deg, #ffb300 60%, #ffd600 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 18px #ffd60099 !important;
+}
+
+.dark-mode .saisie-success {
+  background: #1b5e20 !important;
+  color: #fff !important;
+  border: 1.5px solid #388e3c !important;
+}
+
+.dark-mode .parametres-card .parametres-option, .dark-mode .parametres-option {
+  background: #23242a !important;
+  border: 1.5px solid #444 !important;
+  color: #fff !important;
+  box-shadow: 0 1px 6px #0005 !important;
+}
+
+.dark-mode .parametres-card .parametres-option span, .dark-mode .parametres-option span {
+  color: #ffd600 !important;
+}
+
+.dark-mode .parametres-card .slider, .dark-mode .slider {
+  background-color: #444 !important;
+}
+
+.dark-mode .parametres-card .switch input:checked + .slider, .dark-mode .switch input:checked + .slider {
+  background-color: #ffd600 !important;
+}
+
+.dark-mode .parametres-card .slider:before, .dark-mode .slider:before {
+  background-color: #232323 !important;
+}
+
+/* Sélection de texte plus visible en dark mode */
+.dark-mode ::selection {
+  background: #ffd600 !important;
+  color: #232323 !important;
+}
+
+/* Patch global lisibilité mode sombre */
+.dark-mode, .dark-mode body, .dark-mode * {
+  color: #f3f3f3 !important;
+  border-color: #444 !important;
+  box-shadow: none;
+}
+.dark-mode h1, .dark-mode h2, .dark-mode h3, .dark-mode h4, .dark-mode h5, .dark-mode h6, .dark-mode label, .dark-mode .saisie-title, .dark-mode .parametres-title {
+  color: #ffd600 !important;
+}
+.dark-mode input, .dark-mode select, .dark-mode textarea {
+  color: #fff !important;
+  background: #23242a !important;
+  border-color: #ffd600 !important;
+}
+.dark-mode input:focus, .dark-mode select:focus, .dark-mode textarea:focus {
+  color: #ffd600 !important;
+  border-color: #ffd600 !important;
+}
+.dark-mode .saisie-help, .dark-mode .parametres-help, .dark-mode .saisie-jour-info {
+  color: #bdbdbd !important;
+}
+.dark-mode .saisie-jour-ferie {
+  color: #ffd600 !important;
+  background: #292a2f !important;
+}
+.dark-mode .saisie-success, .dark-mode .msg-success {
+  color: #fff !important;
+  background: #1b5e20 !important;
+  border-color: #388e3c !important;
+}
+.dark-mode .parametres-option span, .dark-mode .theme-label, .dark-mode .theme-label span {
+  color: #ffd600 !important;
+}
