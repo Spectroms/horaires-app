@@ -326,4 +326,18 @@ input:focus, select:focus, textarea:focus {
   margin: 1rem 0;
   background-color: var(--bg-secondary);
   border-radius: 4px;
+}
+
+/* Contraste renforcé pour tous les textes sur fond clair */
+.recap, .recap *, 
+.saisie, .saisie *, 
+.parametres, .parametres *, 
+.connexion, .connexion *,
+th, td, label, input, select, textarea, .recap-filtres select, .recap-filtres label {
+  color: #222 !important;
+}
+
+/* Pour les totaux ou cellules de tableau qui pourraient être hérités d'une couleur trop claire */
+.recap th, .recap td {
+  color: #222 !important;
 } 
