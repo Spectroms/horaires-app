@@ -364,4 +364,11 @@ th, td, label, input, select, textarea, .recap-filtres select, .recap-filtres la
 .recap .recap-totaux .recap-total * {
   color: #fff !important;
   opacity: 1 !important;
+}
+
+.recap select,
+.recap .recap-filtres select {
+  color: #fff !important;
+  background: #222 !important;
+  border: 1.5px solid #ffd600 !important;
 } 
