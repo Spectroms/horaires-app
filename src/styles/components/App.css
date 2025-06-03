@@ -340,4 +340,20 @@ th, td, label, input, select, textarea, .recap-filtres select, .recap-filtres la
 /* Pour les totaux ou cellules de tableau qui pourraient être hérités d'une couleur trop claire */
 .recap th, .recap td {
   color: #222 !important;
+}
+
+/* Contraste pour les blocs sombres du récap */
+.recap .recap-totaux,
+.recap .recap-totaux *,
+.recap th,
+.recap .recap-totaux .recap-total,
+.recap .recap-totaux .recap-total * {
+  color: #fff !important;
+}
+
+/* Pour les cellules de totaux de semaine/mois sur fond sombre */
+.recap tr.total-semaine th,
+.recap tr.total-semaine td {
+  color: #fff !important;
+  background: #222 !important;
 } 
